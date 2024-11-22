@@ -1,0 +1,29 @@
+<div class="user-list">
+    <h1>User List</h1>
+  
+    <!-- Trường tìm kiếm -->
+    <input
+      type="text"
+      [(ngModel)]="search"
+      placeholder="Search by name"  
+    />
+  
+    <!-- Danh sách người dùng -->
+    <ul>
+      <li *ngFor="let user of filteredUsers" (click)="onUserClick(user)">
+        {{ user.name }}     
+      </li>
+    </ul>
+  
+    <!-- Cửa sổ pop-up hiển thị thông tin chi tiết người dùng -->
+    <div class="popup" *ngIf="selectedUser">
+      <div class="popup-content">
+        <h2>{{ selectedUser.name }}</h2>
+        <p><strong>Email:</strong> {{ selectedUser.email }}</p>
+        <p><strong>Address:</strong> {{ selectedUser.address.street }}, {{ selectedUser.address.city }}</p>
+        <p><strong>Company:</strong> {{ selectedUser.company.name }}</p>
+        <button (click)="closePopup()">Close</button>
+      </div>
+    </div>
+  </div>
+  
